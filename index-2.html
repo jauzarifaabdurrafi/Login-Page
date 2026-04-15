@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Login Page | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="#"><img src="images/logo.svg" alt="logo"></a>
+    </nav>
+    <div class="form-wrapper">
+        <h2>Sign In</h2>
+        <form id="login-form" action="#" novalidate>
+            <div class="form-control">
+                <input type="text" id="owa-input" required>
+                <label>OWA</label>
+            </div>
+            <div class="form-control">
+                <input type="password" id="password-input" required>
+                <label>Password</label>
+            </div>
+            <p class="error-msg" id="error-msg" aria-live="polite"></p>
+            <button type="submit">Sign In</button>
+            </div>
+
+    <script>
+        const users = [
+            { owa: "hfysm11",  password: "sakeenaendahmuzli",                    url: "https://jauzarifaabdurrafi.github.io/Sakeena-Personalised-Page/" },
+            { owa: "sayms16",  password: "muhammadnorihsanashrafbinshaifulanuar", url: "https://jauzarifaabdurrafi.github.io/Ihsan-Personalised-Page/" },
+            { owa: "ecynr1",   password: "nathanielisaacraj",                    url: "https://jauzarifaabdurrafi.github.io/Nathaniel-Personalised-Page/" },
+            { owa: "scyaf2",   password: "adifanaurafalisa",                     url: "https://jauzarifaabdurrafi.github.io/Adifa-Personalised-Page/" }
+        ];
+
+        const form      = document.getElementById("login-form");
+        const owaInput  = document.getElementById("owa-input");
+        const passInput = document.getElementById("password-input");
+        const errorMsg  = document.getElementById("error-msg");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const match = users.find(u => u.owa === owaInput.value.trim() && u.password === passInput.value.trim());
+            if (match) {
+                window.location.href = match.url;
+            } else {
+                errorMsg.textContent = "Incorrect username or password. Please try again.";
+                passInput.value = "";
+                passInput.focus();
+                form.classList.remove("shake");
+                void form.offsetWidth;
+                form.classList.add("shake");
+            }
+        });
+    </script>
+</body>
+</html>
